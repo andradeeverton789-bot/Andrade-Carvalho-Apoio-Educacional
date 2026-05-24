@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoio Escolar | Física, Matemática e Inglês</title>
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f9fbfd;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGAÇÃO (ABAS) --- */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; /* Ajuda no mobile caso o menu fique grande */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- SEÇÕES --- */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* --- HOME --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            text-align: left;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        /* --- CARDS (PLANOS E QUEM SOMOS) --- */
+        .cards-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 300px;
+            text-align: center;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* --- LINK LATTES --- */
+        .link-lattes {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .link-lattes:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* --- VÍDEO LOCAL --- */
+        .video-local {
+            width: 100%;
+            max-width: 800px; /* Limita a largura máxima para não ficar gigante no PC */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: block;
+            margin: 20px auto 0; /* Centraliza o vídeo */
+        }
+
+        /* --- CONTATO --- */
+        .btn-contato {
+            display: inline-block;
+            background-color: #25D366; /* Cor do WhatsApp */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .btn-contato:hover {
+            transform: scale(1.05);
+        }
+
+        /* Oculta as seções para o efeito de abas, exceto a primeira */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; }
+            nav { flex-wrap: wrap; }
+            .card { width: 100%; max-width: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENU DE ABAS -->
+    <nav>
+        <a href="#" onclick="showTab('inicio', event)">Início</a>
+        <a href="#" onclick="showTab('missao', event)">Missão</a>
+        <a href="#" onclick="showTab('quemsomos', event)">Quem Somos</a>
+        <a href="#" onclick="showTab('Horários', event)">Horários</a>
+        <a href="#" onclick="showTab('planos', event)">Planos Ofertados</a>
+        <a href="#" onclick="showTab('video', event)">Apresentação</a>
+        <a href="#" onclick="showTab('contato', event)">Contato</a>
+    </nav>
+
+    <!-- ABA: INÍCIO -->
+    <section id="inicio" class="tab-content active">
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Tranquilidade para os pais. Rendimento para os filhos.</h1>
+                <p>Otimize o seu tempo e elimine o estresse na hora do dever de casa. Ofereço suporte especializado em Exatas e Inglês básico para alunos do Ensino Fundamental e Médio.</p>
+            </div>
+            <div class="hero-image">
+                <!-- IMAGEM 1: Jovens estudando juntos -->
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jovens diversos estudando felizes">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABA: MISSÃO -->
+    <section id="missao" class="tab-content">
+        <h2>Nossa Missão</h2>
+        <p>Acredito que o tempo em família deve ser de qualidade, e não gasto em conflitos sobre as tarefas escolares. Minha missão é devolver a paz para a sua casa, enquanto garanto que seu filho construa uma base sólida em Física, Matemática e Inglês, desenvolvendo autonomia e preparação real para o futuro escolar e acadêmico.</p>
+    </section>
+
+    <!-- ABA: QUEM SOMOS -->
+    <section id="quemsomos" class="tab-content">
+        <h2>Quem Somos</h2>
+        <p>Conheça os profissionais dedicados ao desenvolvimento educacional do seu filho.</p>
+        
+        <div class="cards-container">
+            <!-- Perfil Everton -->
+            <div class="card" style="width: 400px;">
+                <h3>Prof. Dr. Everton de Andrade</h3>
+                <p><strong>Física e Matemática</strong></p>
+                <p>Licenciado, Mestre e Doutor em Física pela UEPG (Universidade Estadual de Ponta Grossa). Possui especialização em Altas Habilidades e Diversidade de Gênero pela UNINA. Atua há seis anos como professor na rede estadual de ensino (SEED-PR).</p>
+                <!-- Substitua o link abaixo pelo endereço real do seu Lattes -->
+                <a href="http://lattes.cnpq.br/6506379810306123" target="_blank" class="link-lattes">Ver Currículo Lattes</a>
+            </div>
+
+            <!-- Perfil Patricia -->
+            <div class="card" style="width: 400px;">
+                <h3>Profª. Patricia Carvalho</h3>
+                <p><strong>Pedagogia e Administração</strong></p>
+                <p>Formada em Pedagogia e Administração. Atua diretamente na rede municipal de ensino, unindo a visão pedagógica estruturada com a gestão eficiente da rotina escolar, garantindo um acompanhamento completo para os alunos.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ABA: Horários -->
+    <section id="Horários" class="tab-content">
+        <h2>Horários</h2>
+        <p>Saiba os horários atuais disponíveis e agende suas aulas.</p>
+        
+        <div class="cards-container">
+            
+            <!-- descrição horários -->
+            <div class="card" style="width: 800px;">
+                <h3> Presencial e Meet: 
+                      Segundas 17h às 20h 
+                    - Terças das 13h às 20h 
+                    - Quartas 17h às 20h 
+                    - Quintas 17h às 20h 
+                    - Sextas 17h às 20h
+                    - Sabádos das 8h às 16h 
+                
+                </div>
+    </section>
+
+    <!-- ABA: PLANOS OFERTADOS -->
+    <section id="planos" class="tab-content">
+        <h2>Planos e Serviços</h2>
+        <p>Escolha a melhor modalidade para a rotina do seu filho.</p>
+        
+        <div class="cards-container">
+            <!-- CARTÃO 1 -->
+            <div class="card">
+                <!-- IMAGEM 2: Foco no estudo individual/online -->
+                <img src="aluno e noot.avif" alt="Aluno estudando pelo notebook">
+                <h3>Aulas Particulares (meet R$25 - presencial R$50)</h3>
+                <p>Encontros presenciais ou via Google Meet (podem ser gravadas e disponibilizadas a pedido). Foco total em sanar dúvidas de Física e Matemática, preparando o aluno para provas escolares e vestibulares.</p>
+            </div>
+
+            <!-- CARTÃO 2 -->
+            <div class="card">
+                <!-- IMAGEM 3: Resolução de exercícios/matemática -->
+                <img src="listas.png" alt="Caderno com exercícios matemáticos">
+                <h3>Correção de Listas (a combinar) </h3>
+                <p>Envio de listas de exercícios de Exatas pelo aluno. Retorno com correção detalhada, apontamento de erros e feedback explicativo para fixação do conteúdo.</p>
+            </div>
+
+            <!-- CARTÃO 3 -->
+            <div class="card">
+                <!-- IMAGEM 4: Estudo de idiomas -->
+                <img src="ingles.png" alt="Dicionário e anotações">
+                <h3>Inglês Básico (R$25)</h3>
+                <p>Auxílio focado na interpretação de textos escolares e resolução de tarefas, destravando a compreensão da língua de forma prática.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABA: VÍDEO LOCAL -->
+    <section id="video" class="tab-content">
+        <h2>Conheça Meu Trabalho</h2>
+        <p>Assista ao vídeo abaixo para entender como funciona a nossa metodologia.</p>
+        
+        <!-- Substitua "meu-video.mp4" pelo nome exato do seu arquivo de vídeo -->
+        <video class="video-local" controls>
+            <source src="Aula-Física- PSS- 2024.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo. Por favor, atualize seu navegador.
+        </video>
+    </section>
+
+    <!-- ABA: CONTATO -->
+    <section id="contato" class="tab-content" style="text-align: center;">
+        <h2>Vamos conversar?</h2>
+        <p>Agende uma conversa rápida e sem compromisso para entendermos a necessidade do seu filho.</p>
+        <!-- Substitua SEUNUMERO pelo seu telefone com DDD (ex: 5511999999999) -->
+        <a href="https://wa.me/5542999094763?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20apoio%20escolar." target="_blank" class="btn-contato">
+            Falar pelo WhatsApp
+        </a>
+    </section>
+
+    <!-- --- JAVASCRIPT --- -->
+    <script>
+        function showTab(tabId, event) {
+            // Evita que a página pule para o topo ao clicar no link
+            if(event) {
+                event.preventDefault();
+            }
+
+            // Esconde todas as seções
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Mostra apenas a seção selecionada
+            const selectedTab = document.getElementById(tabId);
+            if(selectedTab) {
+                selectedTab.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
